@@ -1,0 +1,64 @@
+:root{
+    --cursor-color: rgb(99, 228, 206);
+    --cursor-size: 20px;
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+}
+* {
+    cursor: none;
+    margin: 0;
+    padding: 0;
+    transition: all;
+    transition: color 5s;
+}
+input{
+    cursor: auto;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+.cursor {
+    position: absolute;
+    z-index: 1;
+    border-radius: 50%;
+    background-color: var(--cursor-color);
+    width: var(--cursor-size);
+    height: var(--cursor-size);
+    transition: filter 0.2s;    left: var(--mouse-x);
+    top: var(--mouse-y);
+}
+.cursor .center   {
+    --size: calc(var(--cursor-size)/5) ;
+    --color: black;
+    position: absolute;
+    border-radius: 50%;
+    width: var(--size);
+    height: var(--size);
+    transform: translate(-50%, -50%);
+    /* translate: -50% -50% ; */
+    background-color: var(--color); 
+    top: calc(var(--cursor-size) / 2);
+    left: calc(var(--cursor-size) / 2);
+    /* left: 50%; */
+    
+}
+.subCursors .subCursor{
+    position: absolute;
+    border-radius: 50%;
+    z-index: 0;
+    background-color: var(--cursor-color);
+    width: calc(var(--cursor-size) - 5px);
+    height: calc(var(--cursor-size) - 5px);
+    transform: translate(calc(--mouse-x - 50%), calc(--mouse-y - 50%));
+    opacity: 0.6;
+    transition: all .08s;
+    filter: blur(2px);
+    left: var(--mouse-x);
+    top: var(--mouse-y);
+}
+.subCursors:nth-child(1){
+    background-color: bisque;
+    border: solid black 5px;
+}
